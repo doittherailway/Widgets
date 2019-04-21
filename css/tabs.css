@@ -1,0 +1,77 @@
+.tabs {
+    display: inline-block;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 500px;
+    width: 240px;
+    height: 220px;
+    font-family: 'Rubik', sans-serif;
+}
+
+.tab-headers {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.tab-headers h1 {
+    border-top: 2px solid rebeccapurple;
+    border-left: 1px solid rebeccapurple;
+    border-right: 1px solid rebeccapurple;
+    border-bottom: 2px solid rebeccapurple;
+    padding: 5px 10px 5px 10px;
+    margin-top: 10px;
+    width: 80px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: rgba(155, 96, 223, 0.5)
+}
+
+.tab-headers > h1:first-child {
+    border-left: 2px solid rebeccapurple;
+}
+
+.tab-headers > h1:last-child {
+    border-right: 2px solid rebeccapurple;
+}
+
+
+
+.tab-headers h1:hover {
+    background-color: rebeccapurple;
+    cursor: pointer;
+    
+}
+
+.tabs article {
+    display: flex;
+    border-left: 2px solid rebeccapurple;
+    border-right: 2px solid rebeccapurple;
+    border-bottom: 2px solid rebeccapurple;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px; 
+    background-color: rgba(155, 96, 223, 0.2);
+    height: 200px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.tab-header-active {
+    background-color: rebeccapurple;
+    font-weight: bold;
+    border-bottom: none;
+    /* this bottom border doesn't work yet, specificity problem */
+}
+
+.tab-image-div {
+    margin: 2px;
+    height: 150px;
+}
+.tab-image {
+    display: inline-block;
+    max-width: 98%;
+    max-height: 98%;
+    border: 1px solid black;
+    margin: 2px;
+}

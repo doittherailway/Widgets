@@ -1,0 +1,38 @@
+.clock {
+    display: flex;
+    position: absolute;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+
+.clock h2 {
+    display: block;
+    font-size: 36px;
+    font-family: 'Rubik', sans-serif;
+}
+
+.time-date {
+    display: inline-block;
+    justify-content: space-around;
+    align-items: center;
+    width: 300px;
+    height: 120px;
+    border-radius: 10px;
+    background-color: rebeccapurple;
+    margin: 20px;
+    border: 2px solid black;
+}
+
+.time-date section {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    padding: 10px;
+    margin: 5px;
+    font-size: 24px;
+    font-family: 'Rubik', sans-serif;
+
+}
