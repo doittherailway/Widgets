@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Clock from './clock/clock';
 import Tab from './tabs';
+import Weather from './weather';
 
 
 class Root extends React.Component {
@@ -18,6 +19,9 @@ class Root extends React.Component {
                 </section>
                 <section>
                     <Tab tabs={tabData} />
+                </section>
+                <section>
+                    <Weather />
                 </section>
             </div>
         );
