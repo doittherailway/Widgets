@@ -12,7 +12,8 @@ class Weather extends React.Component {
                 lon: "",
                 name: "",
             },
-            temperature: ""
+            temperatureF: "",
+            temperatureC: ""
         };
 
         this.locReqSuccess = this.locReqSuccess.bind(this);
@@ -26,8 +27,17 @@ class Weather extends React.Component {
 
     render() {
         return (
-            <div>
-                Weather for {this.state.location.name}
+            <div className="weather">
+                <h2>Weather </h2>
+                <section className="weather-box">
+                <div>
+                    <h3> {this.state.location.name} </h3>
+                </div>
+                <div className="weather-temps">
+                    <h4> {this.state.temperatureC}C </h4>
+                    <h4> {this.state.temperatureF}F </h4>
+                </div>
+                </section>
             </div>
         )
     }
@@ -61,9 +71,11 @@ class Weather extends React.Component {
                 this.setState({
                     location: {
                         name: resp.name
-                    }
+                    },
+                    temperatureC: Math.round(resp.main.temp - 273.15),
+                    temperatureF: Math.round(resp.main.temp * (9/5) - 459.67)
                 })
-                debugger;
+
                 console.log(this.state.location);
                 // debugger;
             } else {

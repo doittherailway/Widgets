@@ -86,6 +86,107 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./frontend/autocomplete.jsx":
+/*!***********************************!*\
+  !*** ./frontend/autocomplete.jsx ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+var Autocomplete =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Autocomplete, _React$Component);
+
+  function Autocomplete(props) {
+    var _this;
+
+    _classCallCheck(this, Autocomplete);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Autocomplete).call(this, props));
+    _this.state = {
+      inputVal: "",
+      searchResults: _this.props.list
+    };
+    _this.updateSearch = _this.updateSearch.bind(_assertThisInitialized(_this));
+    _this.matchResults = _this.matchResults.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(Autocomplete, [{
+    key: "updateSearch",
+    value: function updateSearch(event) {
+      var selectedItem = event.currentTarget.innerText;
+      this.setState({
+        searchResults: [selectedItem]
+      });
+    }
+  }, {
+    key: "matchResults",
+    value: function matchResults(event) {
+      //find matching
+      //event.target.value
+      var inputStr = event.target.value.toLowerCase();
+      var matching = this.props.list.filter(function (el) {
+        return el.startsWith(inputStr);
+      }); //update state
+
+      this.setState({
+        searchResults: matching
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "autocomplete"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Pokemon search:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        className: "auto-input",
+        onChange: this.matchResults,
+        defaultValue: ""
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.state.searchResults.map(function (el) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: el,
+          onClick: _this2.updateSearch
+        }, el);
+      })));
+    }
+  }]);
+
+  return Autocomplete;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (Autocomplete);
+
+/***/ }),
+
 /***/ "./frontend/clock/clock.jsx":
 /*!**********************************!*\
   !*** ./frontend/clock/clock.jsx ***!
@@ -258,6 +359,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _clock_clock__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./clock/clock */ "./frontend/clock/clock.jsx");
 /* harmony import */ var _tabs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./tabs */ "./frontend/tabs.jsx");
 /* harmony import */ var _weather__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./weather */ "./frontend/weather.jsx");
+/* harmony import */ var _autocomplete__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./autocomplete */ "./frontend/autocomplete.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -282,6 +384,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var Root =
 /*#__PURE__*/
 function (_React$Component) {
@@ -298,7 +401,9 @@ function (_React$Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_clock_clock__WEBPACK_IMPORTED_MODULE_2__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_tabs__WEBPACK_IMPORTED_MODULE_3__["default"], {
         tabs: tabData
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_weather__WEBPACK_IMPORTED_MODULE_4__["default"], null)));
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_weather__WEBPACK_IMPORTED_MODULE_4__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_autocomplete__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        list: autoData
+      })));
     }
   }]);
 
@@ -316,6 +421,7 @@ var tabData = {
     content: "This sloth is cute too"
   }
 };
+var autoData = ["bulbasaur", "ivysaur", "venusaur", "charmander", "charmeleon", "charizard", "squirtle", "wartortle", "blastoise"];
 /* harmony default export */ __webpack_exports__["default"] = (Root);
 
 /***/ }),
@@ -519,7 +625,8 @@ function (_React$Component) {
         lon: "",
         name: ""
       },
-      temperature: ""
+      temperatureF: "",
+      temperatureC: ""
     };
     _this.locReqSuccess = _this.locReqSuccess.bind(_assertThisInitialized(_this));
     _this.weatherRequest = _this.weatherRequest.bind(_assertThisInitialized(_this));
@@ -534,7 +641,13 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Weather for ", this.state.location.name);
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "weather"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Weather "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+        className: "weather-box"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, " ", this.state.location.name, " ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "weather-temps"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, " ", this.state.temperatureC, "C "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, " ", this.state.temperatureF, "F "))));
     }
   }, {
     key: "locReqSuccess",
@@ -567,10 +680,11 @@ function (_React$Component) {
           _this2.setState({
             location: {
               name: resp.name
-            }
+            },
+            temperatureC: Math.round(resp.main.temp - 273.15),
+            temperatureF: Math.round(resp.main.temp * (9 / 5) - 459.67)
           });
 
-          debugger;
           console.log(_this2.state.location); // debugger;
         } else {// debugger;
           }

@@ -1,0 +1,31 @@
+.autocomplete {
+    display: inline-block;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 500px;
+    margin-top: 100px;
+    width: 240px;
+    height: 240px;
+    font-family: 'Rubik', sans-serif;
+    border-radius: 10px;
+    background-color: rebeccapurple;
+    border: 2px solid black;
+}
+
+.autocomplete label {
+    margin: 10px;
+    padding: 2px;
+    font-weight: bold;
+}
+
+.auto-input {
+    margin: 10px;
+    padding: 2px;
+    background-color: rgba(155, 96, 223, 0.5);
+}
+
+.autocomplete ul {
+    margin-left: 10px;
+    margin-top: 10px
+    padding: 2px;
+}
