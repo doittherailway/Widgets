@@ -134,6 +134,7 @@ function (_React$Component) {
     };
     _this.updateSearch = _this.updateSearch.bind(_assertThisInitialized(_this));
     _this.matchResults = _this.matchResults.bind(_assertThisInitialized(_this));
+    _this.clearSearch = _this.clearSearch.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -142,6 +143,7 @@ function (_React$Component) {
     value: function updateSearch(event) {
       var selectedItem = event.currentTarget.innerText;
       this.setState({
+        inputVal: selectedItem,
         searchResults: [selectedItem]
       });
     }
@@ -156,7 +158,16 @@ function (_React$Component) {
       }); //update state
 
       this.setState({
+        inputVal: inputStr,
         searchResults: matching
+      });
+    }
+  }, {
+    key: "clearSearch",
+    value: function clearSearch() {
+      this.setState({
+        inputVal: "",
+        searchResults: this.props.list
       });
     }
   }, {
@@ -166,12 +177,17 @@ function (_React$Component) {
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "autocomplete"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Pokemon search:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Pokemon search:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "search-bar"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         className: "auto-input",
         onChange: this.matchResults,
-        defaultValue: ""
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.state.searchResults.map(function (el) {
+        value: this.state.inputVal
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "auto-button",
+        onClick: this.clearSearch
+      }, "clear"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.state.searchResults.map(function (el) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           className: el,
           onClick: _this2.updateSearch

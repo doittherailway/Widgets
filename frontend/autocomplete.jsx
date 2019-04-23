@@ -11,6 +11,7 @@ class Autocomplete extends React.Component {
 
         this.updateSearch = this.updateSearch.bind(this);
         this.matchResults = this.matchResults.bind(this);
+        this.clearSearch = this.clearSearch.bind(this);
     }
 
 
@@ -18,7 +19,10 @@ class Autocomplete extends React.Component {
 
     updateSearch(event){
         let selectedItem = event.currentTarget.innerText;
-        this.setState({searchResults: [selectedItem]});
+        this.setState({
+            inputVal: selectedItem,
+            searchResults: [selectedItem]
+        });
     }
 
     matchResults(event){
@@ -29,10 +33,19 @@ class Autocomplete extends React.Component {
         
         //update state
         this.setState({
+            inputVal: inputStr,
             searchResults: matching
         });
     }
 
+    clearSearch() {
+        this.setState(
+            {
+                inputVal: "",
+                searchResults: this.props.list
+            }
+        );
+    }
 
 
 
@@ -41,7 +54,10 @@ class Autocomplete extends React.Component {
             <div className="autocomplete">
                 <label>
                     Pokemon search:
-                    <input type="text" className="auto-input" onChange={this.matchResults} defaultValue=""></input>
+                    <div className="search-bar">
+                        <input type="text" className="auto-input" onChange={this.matchResults} value={this.state.inputVal}></input>
+                        <button className="auto-button" onClick={this.clearSearch}>clear</button>
+                    </div>
                 </label>
                 <ul>
                     {this.state.searchResults.map((el) => {
